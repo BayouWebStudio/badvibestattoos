@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Request changes to your Bad Vibes Tattoos website">
+    <title>Request Website Changes | Bad Vibes Tattoos</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-bg: #0a0a0f;
+            --secondary-bg: #151520;
+            --accent-purple: #7c3aed;
+            --accent-pink: #ec4899;
+            --accent-cyan: #00ffff;
+            --accent-red: #dc2626;
+            --text-primary: #ffffff;
+            --text-secondary: #a1a1aa;
+            --text-muted: #71717a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--primary-bg) 0%, var(--secondary-bg) 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Animated background stars */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--accent-pink);
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        .star:nth-child(2n) {
+            background: var(--accent-purple);
+            animation-delay: 1s;
+        }
+
+        .star:nth-child(3n) {
+            background: var(--accent-cyan);
+            animation-delay: 2s;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--accent-purple), var(--accent-pink), var(--accent-cyan));
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease infinite;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .form-container {
+            background: rgba(21, 21, 32, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--text-primary);
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .required::after {
+            content: " *";
+            color: var(--accent-red);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(10, 10, 15, 0.8);
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            border-radius: 10px;
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-purple);
+            box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.2);
+            background: rgba(10, 10, 15, 0.9);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .radio-item input[type="radio"] {
+            width: auto;
+            margin: 0;
+        }
+
+        .file-input-wrapper {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .file-input {
+            position: absolute;
+            left: -9999px;
+        }
+
+        .file-input-button {
+            display: block;
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(124, 58, 237, 0.1);
+            border: 2px dashed rgba(124, 58, 237, 0.5);
+            border-radius: 10px;
+            text-align: center;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .file-input-button:hover {
+            background: rgba(124, 58, 237, 0.2);
+            border-color: var(--accent-purple);
+            color: var(--text-primary);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px 32px;
+            background: linear-gradient(45deg, var(--accent-purple), var(--accent-pink));
+            border: none;
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(124, 58, 237, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: var(--accent-cyan);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--accent-purple);
+        }
+
+        .footer-credit {
+            text-align: center;
+            margin-top: 40px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer-credit a {
+            color: var(--text-muted);
+            text-decoration: none;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .form-container {
+                padding: 25px;
+            }
+            
+            body {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated background stars -->
+    <div class="stars" id="stars"></div>
+
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Bad Vibes Tattoos</a>
+        
+        <div class="header">
+            <h1>Request Website Changes</h1>
+            <p>Need updates to your Bad Vibes Tattoos website? Let us know what you'd like to change.</p>
+        </div>
+
+        <div class="form-container">
+            <form action="https://formsubmit.co/bayouwebstudio@gmail.com" method="POST" enctype="multipart/form-data">
+                <!-- FormSubmit Configuration -->
+                <input type="hidden" name="_subject" value="Site Change Request — Bad Vibes Tattoos">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_next" value="https://bayouwebstudio.github.io/badvibestattoos/index.html?message=thank-you">
+                <input type="hidden" name="site_name" value="Bad Vibes Tattoos">
+
+                <div class="form-group">
+                    <label for="name" class="required">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="change-type">What would you like to change?</label>
+                    <select id="change-type" name="change_type">
+                        <option value="">Select a change type...</option>
+                        <option value="Update Gallery Photos">Update Gallery Photos</option>
+                        <option value="Change Text/Content">Change Text/Content</option>
+                        <option value="Update Contact Info">Update Contact Info</option>
+                        <option value="Update Hours">Update Hours</option>
+                        <option value="Add/Remove Services">Add/Remove Services</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="description" class="required">Description</label>
+                    <textarea id="description" name="description" placeholder="Describe the changes you'd like in detail..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="images">Upload Images (Optional)</label>
+                    <div class="file-input-wrapper">
+                        <input type="file" id="images" name="attachment" class="file-input" multiple accept="image/*">
+                        <label for="images" class="file-input-button">
+                            📎 Click to upload images or drag and drop
+                        </label>
+                    </div>
+                    <small style="color: var(--text-muted); margin-top: 5px; display: block;">
+                        For gallery updates, new photos, or reference images
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <label>Priority</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="no-rush" name="priority" value="No rush">
+                            <label for="no-rush">No rush</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="few-days" name="priority" value="Within a few days" checked>
+                            <label for="few-days">Within a few days</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="asap" name="priority" value="ASAP">
+                            <label for="asap">ASAP</label>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">Submit Change Request</button>
+            </form>
+        </div>
+
+        <div class="footer-credit">
+            Website change request system by <a href="#">Bayou Web Studios</a>
+        </div>
+    </div>
+
+    <script>
+        // Create animated stars
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const numStars = 100;
+
+            for (let i = 0; i < numStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // File input feedback
+        document.getElementById('images').addEventListener('change', function() {
+            const button = document.querySelector('.file-input-button');
+            const fileCount = this.files.length;
+            
+            if (fileCount > 0) {
+                button.textContent = `📎 ${fileCount} file${fileCount > 1 ? 's' : ''} selected`;
+                button.style.borderColor = 'var(--accent-purple)';
+                button.style.color = 'var(--text-primary)';
+            } else {
+                button.textContent = '📎 Click to upload images or drag and drop';
+                button.style.borderColor = 'rgba(124, 58, 237, 0.5)';
+                button.style.color = 'var(--text-secondary)';
+            }
+        });
+
+        // Initialize stars when page loads
+        document.addEventListener('DOMContentLoaded', createStars);
+
+        // Check for thank you message
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('message') === 'thank-you') {
+            alert('Thank you! Your change request has been submitted successfully. We\'ll get back to you soon.');
+        }
+    </script>
+</body>
+</html>
